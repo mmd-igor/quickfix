@@ -229,7 +229,7 @@ void MySQLLog::backup()
 
 void MySQLLog::insert( const std::string& table, const std::string value )
 {
-  UtcTimeStamp time;
+  UtcTimeStamp::now() time;
   int year, month, day, hour, minute, second, millis;
   time.getYMD( year, month, day );
   time.getHMS( hour, minute, second, millis );

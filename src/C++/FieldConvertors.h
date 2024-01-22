@@ -250,8 +250,15 @@ struct IntTConvertor
     if( isNegative )
     {
       PRAGMA_PUSH( 4146 );
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winteger-overflow"
+#endif      
       if( nx > typename std::make_unsigned<T>::type( -VALUE_MIN ) )
         return false; // overflow
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif      
       PRAGMA_POP;
     }
     else if ( nx > VALUE_MAX )
